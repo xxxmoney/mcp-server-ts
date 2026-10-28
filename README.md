@@ -2,7 +2,7 @@
 # MCP Server TS
 
 ## About
-- Simple package for creating a MCP Server with TypeScript
+- Simple package for creating MCP Server with TypeScript
 
 ## Getting started
 - Install package using npm (or other package manager)
