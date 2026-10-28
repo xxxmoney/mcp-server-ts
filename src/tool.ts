@@ -7,9 +7,7 @@ type ToolConfig<T extends z.ZodRawShape> = {
 	valueSchema: z.ZodObject<T>;
 };
 type ToolHandlerItemOutput = { type: string; text: string };
-type ToolHandlerOutput = {
-	content: ToolHandlerItemOutput[];
-};
+type ToolHandlerOutput = string | ToolHandlerItemOutput[];
 type ToolHandler<T extends z.ZodRawShape> = (
 	value: z.infer<z.ZodObject<T>>,
 	extra: {
@@ -43,11 +41,17 @@ export function registerTool<T extends z.ZodRawShape>(
 			};
 
 			try {
-				return await tool.handler(value, {
+				const result = await tool.handler(value, {
 					log: log,
 					error: error,
 					context: extra,
 				});
+
+				if (typeof result === "string") {
+					return { content: [{ type: "text", text: result }] };
+				}
+
+				return { content: result };
 			} catch (err) {
 				error(
 					`Failed to execute tool '${tool.config.title}': ${err instanceof Error ? err.message : err}`,
