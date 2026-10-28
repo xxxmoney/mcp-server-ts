@@ -93,3 +93,5 @@ test("Run app http server", async () => {
 	// Cleanup
 	await server.close();
 });
+
+// TODO: maybe add stdio test?
