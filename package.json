@@ -7,6 +7,7 @@
 		"dev": "tsx watch src/protocol/http.ts",
 		"build": "tsup src/protocol/http.ts src/protocol/stdio.ts --format esm",
 		"start": "node dist/index.js",
+		"test": "vitest",
 		"lint": "biome check --write",
 		"inspect-http": "dotenv -e .env -- cross-var inspector http://localhost:%EXTERNAL_PORT%/mcp",
 		"inspect-http:dev": "dotenv -e .env.dev -- cross-var inspector http://localhost:%EXTERNAL_PORT%/mcp",
@@ -38,6 +39,7 @@
 		"@types/node": "^26.6.2",
 		"tsup": "^8.5.1",
 		"tsx": "^4.23.15",
-		"typescript": "^7.0.2"
+		"typescript": "^7.0.2",
+		"vitest": "^5.0.5"
 	}
 }
