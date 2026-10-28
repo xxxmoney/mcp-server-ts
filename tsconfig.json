@@ -2,26 +2,29 @@
 	"compilerOptions": {
 		"rootDir": "./src",
 		"outDir": "./dist",
-
-		"module": "nodenext",
+		"module": "esnext",
+		"moduleResolution": "bundler",
 		"target": "esnext",
-		"lib": ["esnext"],
-		"types": ["node"],
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
 
 		"sourceMap": true,
 		"declaration": true,
 		"declarationMap": true,
+		"removeComments": true,
+		"forceConsistentCasingInFileNames": true,
 
-		"noUncheckedIndexedAccess": true,
-		"exactOptionalPropertyTypes": true,
-
-		"allowImportingTsExtensions": true,
-
-		"strict": true,
 		"verbatimModuleSyntax": true,
-		"isolatedModules": true,
-		"noUncheckedSideEffectImports": true,
-		"moduleDetection": "force",
-		"skipLibCheck": true
-	}
+		"isolatedModules": true
+	},
+	"exclude": [
+		"node_modules",
+		"dist",
+		"**/*.test.ts",
+		"**/*.e2e.ts",
+		"**/*.integration.test.ts",
+		"__mocks__",
+		"eslint.config.ts"
+	]
 }
