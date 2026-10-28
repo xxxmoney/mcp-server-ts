@@ -1,10 +1,9 @@
 import { McpServer } from "@modelcontextprotocol/server";
-import type { z } from "zod";
 import type { AppConfig } from "./app.ts";
-import { registerTool, type Tool } from "./tool.ts";
 
+export type RegisterToolFunction = (mcp: McpServer) => void;
 export interface McpServerConfig extends AppConfig {
-	tools: Tool<z.ZodRawShape>[];
+	registerTools: RegisterToolFunction[];
 }
 
 export function createMcpServer(config: McpServerConfig) {
@@ -14,8 +13,8 @@ export function createMcpServer(config: McpServerConfig) {
 		console.error("MCP error: ", error);
 	};
 
-	for (const tool of config.tools) {
-		registerTool(mcp, tool);
+	for (const registerTool of config.registerTools) {
+		registerTool(mcp);
 	}
 
 	return mcp;
