@@ -1,0 +1,43 @@
+{
+	"name": "mcp-server-ts",
+	"version": "1.0.0",
+	"description": "Simple MCP server ready to use package with TypeScript",
+	"main": "index.js",
+	"scripts": {
+		"dev": "tsx watch src/protocol/http.ts",
+		"build": "tsup src/protocol/http.ts src/protocol/stdio.ts --format esm",
+		"start": "node dist/index.js",
+		"lint": "biome check --write",
+		"inspect-http": "dotenv -e .env -- cross-var inspector http://localhost:%EXTERNAL_PORT%/mcp",
+		"inspect-http:dev": "dotenv -e .env.dev -- cross-var inspector http://localhost:%EXTERNAL_PORT%/mcp",
+		"inspect-stdio": "inspector docker exec -i mcp-llm-prod node dist/stdio.js",
+		"inspect-stdio:dev": "inspector docker exec -i mcp-llm-dev npx tsx src/protocol/stdio.ts"
+	},
+	"keywords": [
+		"mcp",
+		"modelcontextprotocol",
+		"llm",
+		"fastify",
+		"typescript"
+	],
+	"author": "Jakub Hána",
+	"license": "MIT",
+	"type": "module",
+	"dependencies": {
+		"@fastify/cors": "^11.3.0",
+		"@fastify/type-provider-zod": "^1.0.0",
+		"@modelcontextprotocol/fastify": "^2.0.0",
+		"@modelcontextprotocol/node": "^2.1.0",
+		"@modelcontextprotocol/server": "^2.0.0",
+		"fastify": "^5.12.5",
+		"zod": "^4.6.5"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.5.14",
+		"@modelcontextprotocol/inspector": "^2.12.0",
+		"@types/node": "^26.6.2",
+		"tsup": "^8.5.1",
+		"tsx": "^4.23.15",
+		"typescript": "^7.0.2"
+	}
+}
