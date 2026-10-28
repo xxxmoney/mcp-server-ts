@@ -11,7 +11,7 @@ export type HttpConfig = {
 	port: number;
 };
 
-export function createHttpServer(
+export async function createHttpServer(
 	httpConfig: HttpConfig,
 	mcpServerConfig: McpServerConfig,
 ) {
@@ -73,16 +73,11 @@ export function createHttpServer(
 		await connection.handleRequest(request.raw, reply.raw, request.body);
 	});
 
-	server.listen(
-		{ host: httpConfig.host, port: httpConfig.port },
-		(err, address) => {
-			if (err) {
-				console.error(err);
-				process.exit(1);
-			}
-			console.log(`Server listening at ${address}`);
-		},
-	);
+	const address = await server.listen({
+		host: httpConfig.host,
+		port: httpConfig.port,
+	});
+	console.log(`Server listening at ${address}`);
 
 	return server;
 }

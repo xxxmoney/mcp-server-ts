@@ -21,8 +21,8 @@ export class McpApp {
 		this.registerTools.push((mcp) => registerTool(mcp, tool));
 	}
 
-	startHttp(httpConfig: HttpConfig) {
-		return createHttpServer(httpConfig, {
+	async startHttp(httpConfig: HttpConfig) {
+		return await createHttpServer(httpConfig, {
 			...this.appConfig,
 			registerTools: this.registerTools,
 		});

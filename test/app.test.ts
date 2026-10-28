@@ -1,10 +1,11 @@
+import type { AddressInfo } from "node:net";
 import { expect, test } from "vitest";
 import { z } from "zod";
 import { McpApp } from "../src/app";
 
 test("Run app http server", async () => {
 	const HOST = "localhost";
-	const PORT = 2222;
+	const PORT = 0; // dynamically assign port
 	const TOOL_NAME = "test-tool";
 
 	// Arrange
@@ -23,16 +24,17 @@ test("Run app http server", async () => {
 			return value.message;
 		},
 	});
-	const server = app.startHttp({
+	const server = await app.startHttp({
 		host: HOST,
 		port: PORT,
 	});
 
 	// Check if server ready
 	await server.ready();
+	const address = server.server.address() as AddressInfo;
 
 	// Health check
-	const url = `http://${HOST}:${PORT}`;
+	const url = `http://${HOST}:${address.port}`;
 	const healthCheck = await fetch(url);
 	expect(healthCheck.status).toBe(200);
 	expect(await healthCheck.text()).toBe("I am alive!");
