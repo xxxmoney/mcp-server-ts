@@ -17,6 +17,7 @@ export async function createStdioServer(mcpServerConfig: McpServerConfig) {
 		}
 	}
 
+	// stdio hates using log (because it corrupts the stdout) - so replace with our log
 	console.debug = log;
 	console.log = log;
 	console.info = log;
