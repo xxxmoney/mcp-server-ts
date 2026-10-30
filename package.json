@@ -1,0 +1,53 @@
+{
+	"name": "mcp-server-ts",
+	"version": "1.0.0",
+	"description": "Simple MCP server ready to use package with TypeScript",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist",
+		"README.md"
+	],
+	"scripts": {
+		"build": "tsc",
+		"start": "node dist/index.js",
+		"test": "vitest",
+		"lint": "biome check --write",
+		"inspect-http": "inspector",
+		"prepublishOnly": "npm run test && npm run build"
+	},
+	"keywords": [
+		"mcp",
+		"modelcontextprotocol",
+		"llm",
+		"fastify",
+		"typescript"
+	],
+	"author": "Jakub Hána",
+	"license": "MIT",
+	"type": "module",
+	"dependencies": {
+		"@fastify/cors": "^11.3.0",
+		"@fastify/type-provider-zod": "^1.0.0",
+		"@modelcontextprotocol/fastify": "^2.0.0",
+		"@modelcontextprotocol/node": "^2.1.0",
+		"@modelcontextprotocol/server": "^2.0.0",
+		"fastify": "^5.12.5",
+		"zod": "^4.6.5"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.5.14",
+		"@modelcontextprotocol/inspector": "^2.12.0",
+		"@types/node": "^26.6.2",
+		"tsup": "^8.5.1",
+		"tsx": "^4.23.15",
+		"typescript": "^7.0.2",
+		"vitest": "^5.0.5"
+	}
+}

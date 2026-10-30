@@ -29,3 +29,6 @@ dist-ssr
 # Env
 .env
 .env.dev
+
+# Vitest reports and artifacts
+.vitest

@@ -1,0 +1,31 @@
+{
+	"compilerOptions": {
+		"rootDir": "./src",
+		"outDir": "./dist",
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"target": "esnext",
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"allowImportingTsExtensions": false,
+
+		"sourceMap": true,
+		"declaration": true,
+		"declarationMap": true,
+		"removeComments": true,
+		"forceConsistentCasingInFileNames": true,
+
+		"verbatimModuleSyntax": true,
+		"isolatedModules": true
+	},
+	"exclude": [
+		"node_modules",
+		"dist",
+		"**/*.test.ts",
+		"**/*.e2e.ts",
+		"**/*.integration.test.ts",
+		"__mocks__",
+		"biome.json"
+	]
+}
