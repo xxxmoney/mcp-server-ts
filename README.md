@@ -18,29 +18,35 @@
     // Create a new Mcp App instance
     const app = new McpApp({ name: "TestApp", version: "1.0.0" });
   
-    // Specify a tool 
-    app.tool({
+    // Register tool (can be done multiple times for different tools)
+    app.registerTool({
         config: {
-            title: TOOL_NAME,
-            description: "A test tool",
+            // Unique name to other tools
+            title: "Test Tool", 
+            // What the tool does (so the LLM knows what's up)
+            description: "Returns the sent message",
+            // Validation schema for input value (using zod)
             valueSchema: z.object({
                 message: z.string(),
             }),
         },
-        handler: async (value, { log }) => {
+        // How to handle the request to the tool
+        // Provides the value (validated by the schema), a logger, an error logger, and the context of the MCP Server
+        handler: async (value, { log, error, context }) => {
             log(`Got message: '${value.message}'`);
     
-            return value.message;
+            return value.message; // Can return string or array of objects { type: string; text: string }
         },
     });
   
     // Start the http server
-    await app.startHttp({
+    await app.startHttpServer({
         host: 'localhost',
         port: 666,
     });
   
-    // Or start the stdio server
-    await app.startStdio();
+    // And/Or start the stdio server
+    // Logging is automatically redirected either to docker log, or to console.error (as not to pollute stdout)
+    await app.startStdioServer();
   ```
 

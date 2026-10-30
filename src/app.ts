@@ -17,11 +17,11 @@ export class McpApp {
 		this.appConfig = config;
 	}
 
-	tool<T extends z.ZodRawShape>(tool: Tool<T>) {
+	registerTool<T extends z.ZodRawShape>(tool: Tool<T>) {
 		this.registerTools.push((mcp) => registerTool(mcp, tool));
 	}
 
-	async startHttp(httpConfig: HttpConfig) {
+	async startHttpServer(httpConfig: HttpConfig) {
 		const server = await createHttpServer(httpConfig, {
 			...this.appConfig,
 			registerTools: this.registerTools,
@@ -30,7 +30,7 @@ export class McpApp {
 
 		return server;
 	}
-	async startStdio() {
+	async startStdioServer() {
 		return await createStdioServer({
 			...this.appConfig,
 			registerTools: this.registerTools,

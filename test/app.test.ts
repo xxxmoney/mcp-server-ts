@@ -10,7 +10,7 @@ test("Run app http server", async () => {
 
 	// Arrange
 	const app = new McpApp({ name: "TestApp", version: "1.0.0" });
-	app.tool({
+	app.registerTool({
 		config: {
 			title: TOOL_NAME,
 			description: "A test tool",
@@ -24,7 +24,7 @@ test("Run app http server", async () => {
 			return value.message;
 		},
 	});
-	const server = await app.startHttp({
+	const server = await app.startHttpServer({
 		host: HOST,
 		port: PORT,
 	});
