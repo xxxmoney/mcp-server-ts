@@ -22,10 +22,13 @@ export class McpApp {
 	}
 
 	async startHttp(httpConfig: HttpConfig) {
-		return await createHttpServer(httpConfig, {
+		const server = await createHttpServer(httpConfig, {
 			...this.appConfig,
 			registerTools: this.registerTools,
 		});
+		await server.ready();
+
+		return server;
 	}
 	async startStdio() {
 		return await createStdioServer({

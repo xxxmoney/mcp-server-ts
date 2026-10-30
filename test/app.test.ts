@@ -30,7 +30,6 @@ test("Run app http server", async () => {
 	});
 
 	// Check if server ready
-	await server.ready();
 	const address = server.server.address() as AddressInfo;
 
 	// Health check
