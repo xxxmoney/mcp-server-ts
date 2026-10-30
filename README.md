@@ -35,7 +35,7 @@
         handler: async (value, { log, error, context }) => {
             log(`Got message: '${value.message}'`);
     
-            return value.message; // Can return string or array of objects { type: string; text: string }
+            return value.message; // Can return string or array of objects { type: "text"; text: string }
         },
     });
   

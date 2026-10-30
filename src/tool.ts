@@ -8,7 +8,7 @@ export interface ToolConfig<T extends z.ZodRawShape> {
 }
 
 export interface ToolHandlerItemOutput {
-	type: string;
+	type: "text";
 	text: string;
 }
 export type ToolHandlerOutput = string | ToolHandlerItemOutput[];
