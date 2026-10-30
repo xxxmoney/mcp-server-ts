@@ -54,7 +54,7 @@ export function registerTool<T extends z.ZodRawShape>(
 				return { content: result };
 			} catch (err) {
 				error(
-					`Failed to execute tool '${tool.config.title}': ${err instanceof Error ? err.message : err}`,
+					`Failed to execute tool '${tool.config.title}': '${err instanceof Error ? err.message : err}'`,
 				);
 
 				throw err;
