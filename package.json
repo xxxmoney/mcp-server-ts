@@ -2,17 +2,25 @@
 	"name": "mcp-server-ts",
 	"version": "1.0.0",
 	"description": "Simple MCP server ready to use package with TypeScript",
-	"main": "index.js",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist",
+		"README.md"
+	],
 	"scripts": {
-		"dev": "tsx watch src/protocol/http.ts",
-		"build": "tsup src/protocol/http.ts src/protocol/stdio.ts --format esm",
+		"build": "tsc",
 		"start": "node dist/index.js",
 		"test": "vitest",
 		"lint": "biome check --write",
-		"inspect-http": "dotenv -e .env -- cross-var inspector http://localhost:%EXTERNAL_PORT%/mcp",
-		"inspect-http:dev": "dotenv -e .env.dev -- cross-var inspector http://localhost:%EXTERNAL_PORT%/mcp",
-		"inspect-stdio": "inspector docker exec -i mcp-llm-prod node dist/stdio.js",
-		"inspect-stdio:dev": "inspector docker exec -i mcp-llm-dev npx tsx src/protocol/stdio.ts"
+		"inspect-http": "inspector",
+		"prepublishOnly": "npm run test && npm run build"
 	},
 	"keywords": [
 		"mcp",

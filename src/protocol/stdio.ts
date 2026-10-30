@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { format } from "node:util";
 import { StdioServerTransport } from "@modelcontextprotocol/server/stdio";
-import { createMcpServer, type McpServerConfig } from "../mcp.ts";
+import { createMcpServer, type McpServerConfig } from "../mcp";
 
 export async function createStdioServer(mcpServerConfig: McpServerConfig) {
 	let log = console.error;

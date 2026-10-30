@@ -1,5 +1,5 @@
 import { McpServer } from "@modelcontextprotocol/server";
-import type { AppConfig } from "./app.ts";
+import type { AppConfig } from "./app";
 
 export type RegisterToolFunction = (mcp: McpServer) => void;
 export interface McpServerConfig extends AppConfig {

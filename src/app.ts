@@ -1,8 +1,8 @@
 import type { z } from "zod";
-import type { RegisterToolFunction } from "./mcp.ts";
-import { createHttpServer, type HttpConfig } from "./protocol/http.ts";
-import { createStdioServer } from "./protocol/stdio.ts";
-import { registerTool, type Tool } from "./tool.ts";
+import type { RegisterToolFunction } from "./mcp";
+import { createHttpServer, type HttpConfig } from "./protocol/http";
+import { createStdioServer } from "./protocol/stdio";
+import { registerTool, type Tool } from "./tool";
 
 export interface AppConfig {
 	name: string;

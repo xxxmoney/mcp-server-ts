@@ -3,8 +3,8 @@ import cors from "@fastify/cors";
 import { createMcpFastifyApp } from "@modelcontextprotocol/fastify";
 import { NodeStreamableHTTPServerTransport } from "@modelcontextprotocol/node";
 import { isInitializeRequest } from "@modelcontextprotocol/server";
-import { SESSION_ID_HEADER } from "../constants.ts";
-import { createMcpServer, type McpServerConfig } from "../mcp.ts";
+import { SESSION_ID_HEADER } from "../constants";
+import { createMcpServer, type McpServerConfig } from "../mcp";
 
 export type HttpConfig = {
 	host: string;

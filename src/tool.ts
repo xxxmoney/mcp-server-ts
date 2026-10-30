@@ -1,14 +1,18 @@
 import type { McpServer, ServerContext } from "@modelcontextprotocol/server";
 import type { z } from "zod";
 
-type ToolConfig<T extends z.ZodRawShape> = {
+export interface ToolConfig<T extends z.ZodRawShape> {
 	title: string;
 	description: string;
 	valueSchema: z.ZodObject<T>;
-};
-type ToolHandlerItemOutput = { type: string; text: string };
-type ToolHandlerOutput = string | ToolHandlerItemOutput[];
-type ToolHandler<T extends z.ZodRawShape> = (
+}
+
+export interface ToolHandlerItemOutput {
+	type: string;
+	text: string;
+}
+export type ToolHandlerOutput = string | ToolHandlerItemOutput[];
+export type ToolHandler<T extends z.ZodRawShape> = (
 	value: z.infer<z.ZodObject<T>>,
 	extra: {
 		log: (message: string) => void;
@@ -29,6 +33,7 @@ export function registerTool<T extends z.ZodRawShape>(
 	mcp.registerTool(
 		tool.config.title,
 		{
+			title: tool.config.title,
 			description: tool.config.description,
 			inputSchema: tool.config.valueSchema,
 		},
