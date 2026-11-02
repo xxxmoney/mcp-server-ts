@@ -21,7 +21,6 @@ test("Run app stdio server", async () => {
 		});
 	};
 
-	// TODO
 	try {
 		// Initialize
 		send(INITIALIZE_DATA);
@@ -38,5 +37,3 @@ test("Run app stdio server", async () => {
 		expect(hasKilled).toBe(true);
 	}
 });
-
-// TODO: maybe add stdio test?
