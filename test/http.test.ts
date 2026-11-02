@@ -1,6 +1,6 @@
 import type { AddressInfo } from "node:net";
 import { expect, test } from "vitest";
-import { app, getInitializeData, getToolData, TOOL_NAME } from "./helpers/app";
+import { app, INITIALIZE_DATA, TOOL_DATA, TOOL_NAME } from "./helpers/app";
 import { parseData } from "./helpers/parser";
 
 test("Run app http server", async () => {
@@ -23,16 +23,31 @@ test("Run app http server", async () => {
 	expect(await healthCheck.text()).toBe("I am alive!");
 
 	// Initialize
-	const initialize = await fetch(`${url}/mcp`, getInitializeData());
+	const initialize = await fetch(`${url}/mcp`, {
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+			accept: "application/json, text/event-stream",
+		},
+		body: JSON.stringify(INITIALIZE_DATA),
+	});
 	const sessionId = initialize.headers.get("mcp-session-id");
 	expect(sessionId).toBeDefined();
 
 	// Tool call
-	const tool = await fetch(`${url}/mcp`, getToolData(sessionId!));
+	const tool = await fetch(`${url}/mcp`, {
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+			accept: "application/json, text/event-stream",
+			"mcp-session-id": sessionId ?? "",
+		},
+		body: JSON.stringify(TOOL_DATA),
+	});
 	const toolText = await tool.text();
 	const data = parseData(toolText);
 	expect(data).toBeDefined();
-	expect(data.result.content[0].text).toBe("Hello");
+	expect(data?.result?.content?.[0].text).toBe("Hello");
 
 	// Cleanup
 	await server.close();
