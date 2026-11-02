@@ -3,7 +3,7 @@ name: Publish Package
 on:
   push:
     branches:
-      - master
+      - master # TODO: maybe first test on curent branch?
 
 permissions:
   id-token: write
