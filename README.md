@@ -1,4 +1,9 @@
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/mcp-server-ts"><img src="https://img.shields.io/npm/v/mcp-server-ts" alt="npm version"></a>
+  <a href="https://github.com/xxxmoney/mcp-server-ts/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Bakalari API TS is released under the MIT license"></a>
+</p>
+
 # MCP Server TS
 
 ## About
