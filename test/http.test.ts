@@ -1,6 +1,6 @@
 import type { AddressInfo } from "node:net";
 import { expect, test } from "vitest";
-import { app, INITIALIZE_DATA, TOOL_DATA, TOOL_NAME } from "./helpers/app";
+import { app, INITIALIZE_DATA, TOOL_DATA } from "./helpers/app";
 import { parseData } from "./helpers/parser";
 
 test("Run app http server", async () => {

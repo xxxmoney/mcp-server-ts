@@ -53,7 +53,7 @@ export function registerTool<T extends z.ZodRawShape>(
 				});
 
 				if (typeof result === "string") {
-					return { content: [{ type: "text", text: result }] };
+					return { content: [{ type: "text" as const, text: result }] };
 				}
 
 				return { content: result };
