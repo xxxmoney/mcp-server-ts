@@ -3,7 +3,7 @@ name: Publish Package
 on:
   push:
     branches:
-      - master # TODO: maybe first test on curent branch?
+      - feature-project-setup # TODO: change back to master after testing on this branch
 
 permissions:
   id-token: write
