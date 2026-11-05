@@ -1,6 +1,6 @@
 {
 	"name": "mcp-server-ts",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Simple MCP server ready to use package with TypeScript",
 	"main": "dist/src/index.js",
 	"types": "dist/src/index.d.ts",
