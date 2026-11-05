@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"rootDir": "./",
+		"rootDir": "./src",
 		"outDir": "./dist",
 		"module": "esnext",
 		"moduleResolution": "bundler",
@@ -19,6 +19,7 @@
 		"verbatimModuleSyntax": true,
 		"isolatedModules": true
 	},
+	"include": ["src/**/*"],
 	"exclude": [
 		"node_modules",
 		"dist",
